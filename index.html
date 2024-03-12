@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resoluciones de Posgrado</title>
+    <style>
+
+        #scrollTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 20px;
+            padding: 10px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body style="font-family: sans-serif;">
+    <header>
+        <h1>Resoluciones de Posgrado (Maestrías) - <a href="https://posgradofiuba.github.io/especializaciones" target="_blank">IR A ESPECIALIZACIONES</a></h1>
+        <input type="text" id="search" placeholder="Buscar resoluciones...">
+    </header>
+    
+    <section>
+      
+		<fieldset>
+		    <h2><font size="5"><u>Laboratorio de Sistemas Embebidos (LSE)</u></font></h2>
+		
+		    <h3>Maestría en Sistemas Embebidos</h3>
+		    <ul>
+		        <li><a href="https://drive.google.com/file/d/123456/view">1337/20</a></li>
+		        <li><a href="https://drive.google.com/file/d/123456/view">1968/21</a></li>
+		    </ul>
+		</fieldset>
+    </section>
+
+
+    <footer>
+        <p>&copy; 2024 Resoluciones de Posgrado</p>
+        <button onclick="scrollToTop()" id="scrollTopBtn" title="Ir arriba">↑</button>
+    </footer>
+
+    <script>
+
+        document.getElementById("search").addEventListener("input", function() {
+            var searchTerm = this.value.toLowerCase();
+            var resolutions = document.querySelectorAll("li");
+
+            resolutions.forEach(function(resolution) {
+                var text = resolution.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    resolution.style.display = "block";
+                } else {
+                    resolution.style.display = "none";
+                }
+            });
+        });
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        }
+
+
+        window.onscroll = function() {
+            var btn = document.getElementById("scrollTopBtn");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        };
+    </script>
+</body>
+</html>
