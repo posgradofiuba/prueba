@@ -9,7 +9,7 @@ function search() {
         var linkText = link.innerText.trim().toLowerCase();
         var href = link.getAttribute("href");
         
-        if (linkText === searchTerm || href.includes(searchTerm + "/")) {
+        if (linkText === searchTerm) {
             var resultLink = document.createElement("a");
             resultLink.href = href;
             resultLink.textContent = linkText;
