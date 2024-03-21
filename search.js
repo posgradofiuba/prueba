@@ -8,8 +8,8 @@ function search() {
     links.forEach(function(link) {
         var linkText = link.innerText.trim().toLowerCase();
         var href = link.getAttribute("href");
-        
-        if (linkText === searchTerm) {
+
+        if (linkText.includes(searchTerm) && linkText.indexOf(searchTerm) === 0) {
             var resultLink = document.createElement("a");
             resultLink.href = href;
             resultLink.textContent = linkText;
