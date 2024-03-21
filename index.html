@@ -26,13 +26,10 @@
         	<a href="https://posgradofiuba.github.io/maestrias/">Maestrías</a>
     	</nav>
 	    
-	<input type="text" id="searchInput" placeholder="Buscar número de resolución">
-    	<button onclick="search()">Buscar</button>
+	<input type="text" id="searchInput" placeholder="Buscar resoluciones..." oninput="search()">
+    	<div id="searchResults"></div>
 
-    	<div id="searchResults">
-    	</div>
-
-    	<script src="search.js"></script>
+    	<script src="search.js" defer></script>
     </header>
 	<hr>
 
