@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resoluciones de Posgrado</title>
+      <title>Barra de Búsqueda</title>
 	
     <style>
         hr {
@@ -24,6 +24,13 @@
         	<a href="https://posgradofiuba.github.io/especializaciones/">Especializaciones</a> |
         	<a href="https://posgradofiuba.github.io/maestrias/">Maestrías</a>
     	</nav>
+	<input type="text" id="searchInput" placeholder="Buscar número de resolución">
+    	<button onclick="search()">Buscar</button>
+
+    	<div id="searchResults">
+    	</div>
+
+    	<script src="search.js"></script>
     </header>
 	<hr>
 
