@@ -6,17 +6,17 @@ function search() {
     var searchResults = [];
 
     links.forEach(function(link) {
-        var linkText = link.innerText.toLowerCase(); 
-        if (linkText.includes(searchTerm)) { 
-            searchResults.push(link.href);
+        var linkText = link.innerText.toLowerCase();
+        if (linkText === searchTerm) {
+            searchResults.push(linkText);
         }
     });
 
     var searchResultsElement = document.getElementById("searchResults");
-    searchResultsElement.innerHTML = ""; 
+    searchResultsElement.innerHTML = "";
     if (searchResults.length > 0) {
         searchResults.forEach(function(result) {
-            searchResultsElement.innerHTML += "<p><a href='" + result + "'>" + result + "</a></p>";
+            searchResultsElement.innerHTML += "<p>" + result + "</p>";
         });
     } else {
         searchResultsElement.innerHTML = "<p>No se encontraron resultados.</p>";
