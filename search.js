@@ -20,7 +20,7 @@ function search() {
                 resultLink.target = "_blank";
 
                 var resultItem = document.createElement("p");
-                resultItem.innerHTML = "<strong>" + h3Text + ":</strong> ";
+                resultItem.innerHTML = "<strong>" + h3Text + ": </strong>";
                 resultItem.appendChild(resultLink);
 
                 searchResults.push(resultItem);
