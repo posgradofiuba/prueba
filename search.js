@@ -8,8 +8,17 @@ function search() {
     links.forEach(function(link) {
         var linkText = link.innerText.trim().toLowerCase();
         var href = link.getAttribute("href");
-        if (linkText === searchTerm || href.includes(searchTerm)) {
-            searchResults.push({ text: linkText, href: href });
+        
+        if (linkText === searchTerm || href.includes(searchTerm + "/")) {
+            var resultLink = document.createElement("a");
+            resultLink.href = href;
+            resultLink.textContent = linkText;
+            resultLink.target = "_blank";
+            
+            var resultItem = document.createElement("p");
+            resultItem.appendChild(resultLink);
+            
+            searchResults.push(resultItem);
         }
     });
 
@@ -17,7 +26,7 @@ function search() {
     searchResultsElement.innerHTML = "";
     if (searchResults.length > 0) {
         searchResults.forEach(function(result) {
-            searchResultsElement.innerHTML += "<p>" + result.text + "</p>";
+            searchResultsElement.appendChild(result);
         });
     } else {
         searchResultsElement.innerHTML = "<p>No se encontraron resultados.</p>";
