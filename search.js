@@ -9,9 +9,10 @@ function search() {
         const text = link.textContent.toLowerCase();
         const href = link.getAttribute('href');
 
-        if (text.includes(input)) {
+        if (text === input) {
+            const h3Text = link.closest('h3').textContent;
             const resultItem = document.createElement('div');
-            resultItem.innerHTML = `<a href="${href}">${text}</a>`;
+            resultItem.innerHTML = `<p><strong>${h3Text}</strong>: <a href="${href}">${text}</a></p>`;
             resultsContainer.appendChild(resultItem);
         }
     });
