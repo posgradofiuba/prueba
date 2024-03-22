@@ -18,13 +18,10 @@ function search() {
             if (resolutionNumber && resolutionNumber[0] === searchTerm) { // Comprobamos si el número de resolución coincide exactamente con el término de búsqueda
                 var resultLink = document.createElement("a");
                 resultLink.href = href;
-                resultLink.textContent = searchTerm; // Mostramos el número de resolución en el enlace
+                resultLink.textContent = h2Text + ' - ' + link.parentElement.querySelector('h3').textContent + ': ' + searchTerm; // Mostramos el número de resolución en el enlace
                 resultLink.target = "_blank";
 
-                var h3Text = link.parentElement.previousElementSibling.innerText.trim(); // Obtenemos el texto del h3 correspondiente al enlace
-
                 var resultItem = document.createElement("p");
-                resultItem.innerHTML = "<strong>" + h2Text + " - " + h3Text + ": </strong>"; // Usamos el h3 específico del enlace
                 resultItem.appendChild(resultLink);
 
                 searchResults.push(resultItem);
