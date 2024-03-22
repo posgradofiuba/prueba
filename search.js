@@ -9,16 +9,17 @@ function search() {
     links.forEach(function(link) {
         var linkText = link.innerText.trim().toLowerCase();
         var href = link.getAttribute("href");
-        var h3Text = link.closest("section").querySelector("h3").innerText.trim();
+        var h3Text = link.closest("section").querySelector("h3").innerText.trim(); // Obtenemos el h3 específico del enlace
 
-        if (linkText.includes(searchTerm) && linkText.indexOf(searchTerm) === 0) {
+        if (linkText === searchTerm) { // Solo agregamos resultados si el texto del enlace es exactamente igual a la búsqueda
+            var resultItem = document.createElement("p");
+            resultItem.innerHTML = "<strong>" + h3Text + ": </strong>"; // Usamos el h3 específico del enlace
+
             var resultLink = document.createElement("a");
             resultLink.href = href;
             resultLink.textContent = linkText;
             resultLink.target = "_blank";
 
-            var resultItem = document.createElement("p");
-            resultItem.innerHTML = "<strong>" + h3Text + ": </strong>";
             resultItem.appendChild(resultLink);
 
             searchResults.push(resultItem);
