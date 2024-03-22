@@ -2,30 +2,27 @@ function search() {
     var searchTerm = document.getElementById("searchInput").value.trim().toLowerCase();
     if (!searchTerm) return;
 
-    var sections = document.querySelectorAll("section");
     var searchResults = [];
 
-    sections.forEach(function(section) {
-        var h3Text = section.querySelector("h3").innerText.trim(); // Obtenemos el h3 de la sección actual
-        var links = section.querySelectorAll("a");
+    var links = document.querySelectorAll("a");
 
-        links.forEach(function(link) {
-            var linkText = link.innerText.trim().toLowerCase();
-            var href = link.getAttribute("href");
+    links.forEach(function(link) {
+        var linkText = link.innerText.trim().toLowerCase();
+        var href = link.getAttribute("href");
+        var h3Text = link.closest("section").querySelector("h3").innerText.trim(); // Obtenemos el h3 específico del enlace
 
-            if (linkText.includes(searchTerm) && linkText.indexOf(searchTerm) === 0) {
-                var resultLink = document.createElement("a");
-                resultLink.href = href;
-                resultLink.textContent = linkText;
-                resultLink.target = "_blank";
+        if (linkText.includes(searchTerm) && linkText.indexOf(searchTerm) === 0) {
+            var resultLink = document.createElement("a");
+            resultLink.href = href;
+            resultLink.textContent = linkText;
+            resultLink.target = "_blank";
 
-                var resultItem = document.createElement("p");
-                resultItem.innerHTML = "<strong>" + h3Text + ": </strong>"; // Usamos el h3 obtenido anteriormente
-                resultItem.appendChild(resultLink);
+            var resultItem = document.createElement("p");
+            resultItem.innerHTML = "<strong>" + h3Text + ": </strong>"; // Usamos el h3 específico del enlace
+            resultItem.appendChild(resultLink);
 
-                searchResults.push(resultItem);
-            }
-        });
+            searchResults.push(resultItem);
+        }
     });
 
     var searchResultsElement = document.getElementById("searchResults");
