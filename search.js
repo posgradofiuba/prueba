@@ -12,8 +12,7 @@ function search() {
         links.forEach(function(link) {
             var linkText = link.innerText.trim().toLowerCase();
             var href = link.getAttribute("href");
-
-            var h3Text = link.parentElement.previousElementSibling.querySelector("h3").innerText.trim(); // Obtenemos el h3 específico del enlace
+            var h3Text = link.closest("ul").previousElementSibling.innerText.trim(); // Obtener el texto del h3 más cercano al enlace
 
             if (linkText === searchTerm) { // Comprobamos si el texto del enlace coincide exactamente con el término de búsqueda
                 var resultLink = document.createElement("a");
