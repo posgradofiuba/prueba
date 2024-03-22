@@ -4,25 +4,29 @@ function search() {
 
     var searchResults = [];
 
-    var links = document.querySelectorAll("a");
+    var sections = document.querySelectorAll("section");
 
-    links.forEach(function(link) {
-        var linkText = link.innerText.trim().toLowerCase();
-        var href = link.getAttribute("href");
-        var h3Text = findClosestH3(link).innerText.trim(); // Obtener el título específico de la carrera
+    sections.forEach(function(section) {
+        var h3Text = section.querySelector("h3").innerText.trim();
+        var links = section.querySelectorAll("a");
 
-        if (linkText.includes(searchTerm) && linkText.indexOf(searchTerm) === 0) {
-            var resultLink = document.createElement("a");
-            resultLink.href = href;
-            resultLink.textContent = linkText;
-            resultLink.target = "_blank";
+        links.forEach(function(link) {
+            var linkText = link.innerText.trim().toLowerCase();
+            var href = link.getAttribute("href");
 
-            var resultItem = document.createElement("p");
-            resultItem.innerHTML = "<strong>" + h3Text + ": </strong>"; // Usar el título específico de la carrera
-            resultItem.appendChild(resultLink);
+            if (linkText.includes(searchTerm) && linkText.indexOf(searchTerm) === 0) {
+                var resultLink = document.createElement("a");
+                resultLink.href = href;
+                resultLink.textContent = linkText;
+                resultLink.target = "_blank";
 
-            searchResults.push(resultItem);
-        }
+                var resultItem = document.createElement("p");
+                resultItem.innerHTML = "<strong>" + h3Text + ": </strong>";
+                resultItem.appendChild(resultLink);
+
+                searchResults.push(resultItem);
+            }
+        });
     });
 
     var searchResultsElement = document.getElementById("searchResults");
@@ -34,15 +38,4 @@ function search() {
     } else {
         searchResultsElement.innerHTML = "<p>No se encontraron resultados.</p>";
     }
-}
-
-function findClosestH3(element) {
-    var ancestor = element.parentElement;
-    while (ancestor) {
-        if (ancestor.tagName === "SECTION") {
-            return ancestor.querySelector("h3");
-        }
-        ancestor = ancestor.parentElement;
-    }
-    return null;
 }
