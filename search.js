@@ -1,19 +1,37 @@
 function search() {
-    const input = document.getElementById('searchInput').value.toLowerCase();
-    const resultsContainer = document.getElementById('searchResults');
-    resultsContainer.innerHTML = '';
+    var searchTerm = document.getElementById("searchInput").value.trim().toLowerCase();
+    if (!searchTerm) return;
 
-    const links = document.querySelectorAll('a');
+    var searchResults = [];
 
-    links.forEach(link => {
-        const text = link.textContent.toLowerCase();
-        const href = link.getAttribute('href');
+    var links = document.querySelectorAll("a");
 
-        if (text === input) {
-            const h3Text = link.closest('h3').textContent;
-            const resultItem = document.createElement('div');
-            resultItem.innerHTML = `<p><strong>${h3Text}</strong>: <a href="${href}">${text}</a></p>`;
-            resultsContainer.appendChild(resultItem);
+    links.forEach(function(link) {
+        var linkText = link.innerText.trim().toLowerCase();
+        var href = link.getAttribute("href");
+        var h3Text = link.closest("section").querySelector("h3").innerText.trim();
+
+        if (linkText.includes(searchTerm) && linkText.indexOf(searchTerm) === 0) {
+            var resultLink = document.createElement("a");
+            resultLink.href = href;
+            resultLink.textContent = linkText;
+            resultLink.target = "_blank";
+
+            var resultItem = document.createElement("p");
+            resultItem.innerHTML = "<strong>" + h3Text + ": </strong>";
+            resultItem.appendChild(resultLink);
+
+            searchResults.push(resultItem);
         }
     });
+
+    var searchResultsElement = document.getElementById("searchResults");
+    searchResultsElement.innerHTML = "";
+    if (searchResults.length > 0) {
+        searchResults.forEach(function(result) {
+            searchResultsElement.appendChild(result);
+        });
+    } else {
+        searchResultsElement.innerHTML = "<p>No se encontraron resultados.</p>";
+    }
 }
