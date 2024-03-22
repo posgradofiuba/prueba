@@ -2,28 +2,29 @@ function search() {
     var searchTerm = document.getElementById("searchInput").value.trim().toLowerCase();
     if (!searchTerm) return;
 
+    var sections = document.querySelectorAll("section");
     var searchResults = [];
 
-    var links = document.querySelectorAll("a");
+    sections.forEach(function(section) {
+        var h3Text = section.querySelector("h3").innerText.trim();
+        var links = section.querySelectorAll("a");
 
-    links.forEach(function(link) {
-        var linkText = link.innerText.trim().toLowerCase();
-        var href = link.getAttribute("href");
-        var h3Text = link.closest("section").querySelector("h3").innerText.trim(); // Obtenemos el h3 específico del enlace
+        links.forEach(function(link) {
+            var linkText = link.innerText.trim().toLowerCase();
+            var href = link.getAttribute("href");
 
-        if (linkText === searchTerm) { // Solo agregamos resultados si el texto del enlace es exactamente igual a la búsqueda
-            var resultItem = document.createElement("p");
-            resultItem.innerHTML = "<strong>" + h3Text + ": </strong>"; // Usamos el h3 específico del enlace
+            if (linkText === searchTerm) { // Comprobamos si el texto del enlace es igual al término de búsqueda exactamente
+                var resultLink = document.createElement("a");
+                resultLink.href = href;
+                resultLink.textContent = h3Text + ": " + linkText; // Cambiamos el texto del enlace por el nombre del h3 y el texto del enlace
+                resultLink.target = "_blank";
 
-            var resultLink = document.createElement("a");
-            resultLink.href = href;
-            resultLink.textContent = linkText;
-            resultLink.target = "_blank";
+                var resultItem = document.createElement("p");
+                resultItem.appendChild(resultLink);
 
-            resultItem.appendChild(resultLink);
-
-            searchResults.push(resultItem);
-        }
+                searchResults.push(resultItem);
+            }
+        });
     });
 
     var searchResultsElement = document.getElementById("searchResults");
