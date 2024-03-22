@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resoluciones de Posgrado</title>
+    <button id="toggleContentButton">Mostrar/Ocultar Contenido</button>
     <link rel="icon" type="image/png" href="https://i.imgur.com/3mmihau.png">
     <style>
         hr {
@@ -13,9 +14,15 @@
             margin: 20px 0;
         }
     </style>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body style="font-family: sans-serif;">
     <header style="text-align: center;">
+        <div id="contentToHide">
         <h1>Resoluciones de Posgrado (Maestrías)</h1>
         <nav>
             <a href="https://posgradofiuba.github.io/">Inicio</a> |
@@ -62,5 +69,23 @@
         </ul>
         <hr>
     </section>
+    </div>
+     <script>
+        // Función para mostrar u ocultar el contenido
+        document.getElementById("toggleContentButton").addEventListener("click", function() {
+            var contentToHide = document.getElementById("contentToHide");
+            contentToHide.classList.toggle("hidden");
+        });
+
+        // Función de búsqueda (simulada)
+        function search() {
+            var searchTerm = document.getElementById("searchInput").value.trim().toLowerCase();
+            if (!searchTerm) return;
+
+            // Simular búsqueda de resultados y mostrarlos
+            var searchResultsElement = document.getElementById("searchResults");
+            searchResultsElement.innerHTML = "<p>Resultados de búsqueda para: " + searchTerm + "</p>";
+        }
+    </script>
 </body>
 </html>
