@@ -9,7 +9,7 @@ function search() {
     links.forEach(function(link) {
         var linkText = link.innerText.trim().toLowerCase();
         var href = link.getAttribute("href");
-        var h3Text = link.closest("section").querySelector("h3").innerText.trim(); // Obtenemos el h3 específico del enlace
+        var h3Text = findClosestH3(link).innerText.trim(); // Obtener el título específico de la carrera
 
         if (linkText.includes(searchTerm) && linkText.indexOf(searchTerm) === 0) {
             var resultLink = document.createElement("a");
@@ -18,7 +18,7 @@ function search() {
             resultLink.target = "_blank";
 
             var resultItem = document.createElement("p");
-            resultItem.innerHTML = "<strong>" + h3Text + ": </strong>"; // Usamos el h3 específico del enlace
+            resultItem.innerHTML = "<strong>" + h3Text + ": </strong>"; // Usar el título específico de la carrera
             resultItem.appendChild(resultLink);
 
             searchResults.push(resultItem);
@@ -34,4 +34,15 @@ function search() {
     } else {
         searchResultsElement.innerHTML = "<p>No se encontraron resultados.</p>";
     }
+}
+
+function findClosestH3(element) {
+    var ancestor = element.parentElement;
+    while (ancestor) {
+        if (ancestor.tagName === "SECTION") {
+            return ancestor.querySelector("h3");
+        }
+        ancestor = ancestor.parentElement;
+    }
+    return null;
 }
