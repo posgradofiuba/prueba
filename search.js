@@ -18,8 +18,9 @@ function search() {
                 resultLink.textContent = linkText;
                 resultLink.target = "_blank";
 
+                var trimmedH3Text = h3Text.replace("Laboratorio de Sistemas Embebidos (LSE) - ", "");
                 var resultItem = document.createElement("p");
-                resultItem.innerHTML = "<strong>" + h3Text + ": </strong>";
+                resultItem.innerHTML = "<strong>" + trimmedH3Text + ": </strong>";
                 resultItem.appendChild(resultLink);
 
                 searchResults.push(resultItem);
