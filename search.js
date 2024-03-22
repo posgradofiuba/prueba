@@ -7,6 +7,7 @@ function search() {
 
     sections.forEach(function(section) {
         var h2Text = section.querySelector("h2").innerText.trim(); // Obtenemos el texto del h2 de la sección
+        var h3Text = section.querySelector("h3").innerText.trim(); // Obtenemos el texto del h3 de la sección
 
         var links = section.querySelectorAll("a");
         links.forEach(function(link) {
@@ -18,7 +19,7 @@ function search() {
             if (resolutionNumber && resolutionNumber[0] === searchTerm) { // Comprobamos si el número de resolución coincide exactamente con el término de búsqueda
                 var resultLink = document.createElement("a");
                 resultLink.href = href;
-                resultLink.textContent = h2Text + ' - ' + link.parentElement.querySelector('h3').textContent + ': ' + searchTerm; // Mostramos el número de resolución en el enlace
+                resultLink.textContent = h2Text + ' - ' + h3Text + ': ' + resolutionNumber[0]; // Mostramos el número de resolución en el enlace
                 resultLink.target = "_blank";
 
                 var resultItem = document.createElement("p");
