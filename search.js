@@ -6,25 +6,29 @@ function search() {
     var searchResults = [];
 
     sections.forEach(function(section) {
-        var h3Text = section.querySelector("h3").innerText.trim();
-        var links = section.querySelectorAll("a");
+        var h3Element = section.querySelector("h3");
+        if (h3Element !== null) {
+            var h3Text = h3Element.innerText.trim();
+            var links = section.querySelectorAll("a");
 
-        links.forEach(function(link) {
-            var linkText = link.innerText.trim().toLowerCase();
-            var href = link.getAttribute("href");
+            links.forEach(function(link) {
+                var linkText = link.innerText.trim().toLowerCase();
+                var href = link.getAttribute("href");
 
-            if (linkText === searchTerm) { // Comprobamos si el texto del enlace es igual al término de búsqueda exactamente
-                var resultLink = document.createElement("a");
-                resultLink.href = href;
-                resultLink.textContent = h3Text + ": " + linkText; // Cambiamos el texto del enlace por el nombre del h3 y el texto del enlace
-                resultLink.target = "_blank";
+                if (linkText.includes(searchTerm) && linkText.indexOf(searchTerm) === 0) {
+                    var resultLink = document.createElement("a");
+                    resultLink.href = href;
+                    resultLink.textContent = linkText;
+                    resultLink.target = "_blank";
 
-                var resultItem = document.createElement("p");
-                resultItem.appendChild(resultLink);
+                    var resultItem = document.createElement("p");
+                    resultItem.innerHTML = "<strong>" + h3Text + ": </strong>";
+                    resultItem.appendChild(resultLink);
 
-                searchResults.push(resultItem);
-            }
-        });
+                    searchResults.push(resultItem);
+                }
+            });
+        }
     });
 
     var searchResultsElement = document.getElementById("searchResults");
