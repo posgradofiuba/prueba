@@ -6,7 +6,7 @@ function search() {
     var searchResults = [];
 
     sections.forEach(function(section) {
-        var h3Text = section.querySelector("h3").innerText.trim();
+        var h3Text = section.querySelector("h3").innerText.trim(); // Obtenemos el h3 de la sección actual
         var links = section.querySelectorAll("a");
 
         links.forEach(function(link) {
@@ -20,7 +20,7 @@ function search() {
                 resultLink.target = "_blank";
 
                 var resultItem = document.createElement("p");
-                resultItem.innerHTML = "<strong>" + h3Text + ": </strong>";
+                resultItem.innerHTML = "<strong>" + h3Text + ": </strong>"; // Usamos el h3 obtenido anteriormente
                 resultItem.appendChild(resultLink);
 
                 searchResults.push(resultItem);
