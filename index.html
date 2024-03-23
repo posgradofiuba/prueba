@@ -6,12 +6,20 @@
     <title>Resoluciones de Posgrado</title>
     <button id="toggleContentButton">Mostrar/Ocultar Contenido</button>
     <link rel="icon" type="image/png" href="https://i.imgur.com/3mmihau.png">
-<style>
-    hr.double {
-        border-top: 3px double black;
-        margin: 20px 0;
+
+    <style>
+    .container {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 20px; /* Ajusta el margen según tu preferencia */
     }
-</style>
+
+    .box {
+        border: 1px solid black; /* Borde para el cuadro */
+        padding: 10px; /* Espacio interno */
+        margin-right: 10px; /* Espacio entre cuadros */
+    }
+    </style>
 
     <style>
         .hidden {
@@ -33,16 +41,25 @@
     <hr>
     <div id="contentToHide"> <!-- Aquí se envuelve el contenido que se puede ocultar -->
         <section>
+        <div class="container">
+            <div class="box">
             <h2><u>Laboratorio de Sistemas Embebidos (LSE)</u></h2>
+            </div>
+            <div class="box">
             <h3>Maestría en Sistemas Embebidos</h3>
             <ul>
                 <li><a href="https://drive.google.com/file/d/123456/view">1337/20</a></li>
                 <li><a href="https://drive.google.com/file/d/123456/view">1968/21</a></li>
             </ul>
-            <hr>
+            </div>
+        </div>
         </section>
         <section>
+            <div class="container">
+            <div class="box">
             <h2><u>Instituto del Gas y del Petróleo (IGPUBA)</u></h2>
+            </div>
+            <div class="box">
             <h3>Especialización en Gas Natural</h3>
             <ul>
                 <li><a href="https://drive.google.com/file/d/1eU3fQ2mQg04vyMbr4p5S-Hg7lRICsIXk/view" target="_blank">3688/96</a></li>
@@ -65,7 +82,8 @@
             <ul>
                 <li><a href="https://drive.google.com/file/d/15QGdWdo2_1QKsC8JW1UTyYJLEmy9irbY/view" target="_blank">7926/13</a></li>
             </ul>
-            <hr>
+            </div>
+            </div>
         </section>
     </div> <!-- Cierre del div contentToHide -->
     <script>
