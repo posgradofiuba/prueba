@@ -39,8 +39,25 @@
             <a href="https://posgradofiuba.github.io/especializaciones/">Especializaciones</a> |
             <a href="https://posgradofiuba.github.io/maestrias/">Maestrías</a>
         </nav>
-        <input type="text" id="searchInput" placeholder="Buscar por número de resolución" oninput="search()">
+        <input type="text" id="searchInput" class="buscador-search" placeholder="Buscar resolucion">
         <div id="searchResults"></div>
+        <style>
+        .buscador-search {
+        background-color: #f5f8fa; 
+        border: 1px solid #ccd6dd; 
+        border-radius: 25px; 
+        padding: 8px 15px; 
+        font-size: 16px; 
+        color: #1da1f2;
+        outline: none; 
+        width: 300px; 
+        }
+
+        .buscador-search:focus {
+        border-color: #1da1f2;
+        }
+        </style>
+        
     </header>
     <hr>
     <div id="contentToHide"> <!-- Aquí se envuelve el contenido que se puede ocultar -->
