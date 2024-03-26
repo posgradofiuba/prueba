@@ -1,0 +1,64 @@
+#scrollBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    font-size: 24px;
+    border: none;
+    outline: none;
+    background-color: rgba(0, 148, 218, 0.8);
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#scrollBtn:hover {
+    background-color: rgba(0, 148, 218, 1);
+}
+
+
+#contentToHide {
+    padding: 10px;
+    margin-top: 10px;
+}
+.container {
+    flex-direction: column;
+}
+.box {
+    border: 1px solid black;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.box-h3 {
+    background-color: #bfbfbf;
+    margin-bottom: 0;
+}
+ul {
+    list-style-type: circle;
+}
+.separator {
+    width: 250px;
+    margin: 20px auto;
+}
+.buscador-res {
+    background-color: #f5f8fa;
+    border: 1px solid #ccd6dd;
+    border-radius: 25px;
+    padding: 8px 15px;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+    width: 250px;
+    margin-bottom: 10px;
+}
+
+.buscador-res:focus {
+    border-color: #333;
+}
+@font-face {
+    font-family: 'Exo 2';
+    src: url('fonts/Exo2-Regular.woff') format('woff');
+}
