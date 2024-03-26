@@ -62,3 +62,7 @@ ul {
     font-family: 'Exo 2';
     src: url('fonts/Exo2-Regular.woff') format('woff');
 }
+/* Establecer estilos para la lista desplegable */
+.dropdown-content {
+  /* Eliminar display: none; para que los elementos sean visibles al principio */
+}
