@@ -52,9 +52,11 @@
         outline: none; 
         width: 300px; 
         }
-
         .buscador-search:focus {
         border-color: #1da1f2;
+        }
+        .dropdown-content {
+        display: none;
         }
         </style>
         
@@ -67,8 +69,8 @@
             <h2>Laboratorio de Sistemas Embebidos (LSE)/h2>
             </div>
             <div class="box">
-            <h3>Maestría en Sistemas Embebidos</h3>
-            <ul>
+            <h3 class="dropdown-trigger">Maestría en Sistemas Embebidos</h3>
+            <ul class="dropdown-content">
                 <li><a href="https://drive.google.com/file/d/123456/view">1337/20</a></li>
                 <li><a href="https://drive.google.com/file/d/123456/view">1968/21</a></li>
             </ul>
@@ -108,21 +110,30 @@
         </section>
     </div> <!-- Cierre del div contentToHide -->
     <script>
-        // Función para mostrar u ocultar el contenido
         document.getElementById("toggleContentButton").addEventListener("click", function() {
             var contentToHide = document.getElementById("contentToHide");
             contentToHide.classList.toggle("hidden");
         });
-
-        // Función de búsqueda (simulada)
         function search() {
             var searchTerm = document.getElementById("searchInput").value.trim().toLowerCase();
             if (!searchTerm) return;
-
-            // Simular búsqueda de resultados y mostrarlos
             var searchResultsElement = document.getElementById("searchResults");
             searchResultsElement.innerHTML = "<p>Resultados de búsqueda para: " + searchTerm + "</p>";
         }
+        var dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
+
+        dropdownTriggers.forEach(function(trigger) {
+        trigger.addEventListener('click', function() {
+        var dropdownContent = this.nextElementSibling;
+
+        var clonedDropdown = dropdownContent.cloneNode(true);
+
+        clonedDropdown.style.display = 'block';
+
+        this.parentNode.insertBefore(clonedDropdown, this.nextSibling);
+        });
+        });
+
     </script>
 </body>
 </html>
