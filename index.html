@@ -66,7 +66,7 @@
         <section>
         <div class="container">
             <div class="box box-h3">
-            <h2>Laboratorio de Sistemas Embebidos (LSE)/h2>
+            <h2>Laboratorio de Sistemas Embebidos (LSE)</h2>
             </div>
             <div class="box">
             <h3 class="dropdown-trigger">Maestría en Sistemas Embebidos</h3>
@@ -120,19 +120,24 @@
             var searchResultsElement = document.getElementById("searchResults");
             searchResultsElement.innerHTML = "<p>Resultados de búsqueda para: " + searchTerm + "</p>";
         }
-        var dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
+        // Obtener todos los elementos h3 con la clase "dropdown-trigger"
+    var dropdownTriggers = document.querySelectorAll('.dropdown-trigger');
 
-        dropdownTriggers.forEach(function(trigger) {
-        trigger.addEventListener('click', function() {
+// Iterar sobre cada elemento y agregar un evento de clic
+    dropdownTriggers.forEach(function(trigger) {
+    trigger.addEventListener('click', function() {
+        // Obtener la lista asociada con este h3
         var dropdownContent = this.nextElementSibling;
 
-        var clonedDropdown = dropdownContent.cloneNode(true);
+        // Toggle para mostrar u ocultar la lista
+        if (dropdownContent.style.display === 'none' || dropdownContent.style.display === '') {
+            dropdownContent.style.display = 'block';
+        } else {
+            dropdownContent.style.display = 'none';
+        }
+    });
+});
 
-        clonedDropdown.style.display = 'block';
-
-        this.parentNode.insertBefore(clonedDropdown, this.nextSibling);
-        });
-        });
 
     </script>
 </body>
